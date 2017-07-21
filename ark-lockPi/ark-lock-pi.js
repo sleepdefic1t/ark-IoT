@@ -16,12 +16,6 @@ const PRICE_FILE = 'tmp/price.txt';
 
 module.exports = function (vorpal) {
 
-/* TODO: */
-/* 1: encrypt & hide data & functions. Swiss cheese like whoa. Utilize clients Signing function. JSON File? */
-/* 2:  */
-/* 3: cleanup with prompt-flow. Switches?  Waaaay too much repitition */
-
-
 
 /* ============================================ */
 /* ========= Set and Get Lock Address ========= */
