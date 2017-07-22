@@ -36,7 +36,7 @@ Open "index.js" from the "Ark-Client" directory with your favorite code editor,
 and insert this requirement:
 ```nodejs
 vorpal
-  .use(require('./lock.js'))
+  .use(require('./ark-lock-pi.js'))
   .show();
 ```
 # 
