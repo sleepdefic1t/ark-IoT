@@ -1,131 +1,88 @@
 #!/usr/bin/env node
 
 var arkjs = require("arkjs");
+var async = require("async");
 var events = require('events');
 var fs = require('fs');
-var vorpal = require('vorpal')();
 // var rpio = require('rpio');
+var vorpal = require('vorpal')();
 
 /* FIXME: not safe. Need to consolidate and encrypt data. */
 const ACCOUNT_FILE = 'tmp/address.txt';
 const LID_FILE = 'tmp/lid.txt';
 const PRICE_FILE = 'tmp/price.txt';
 
+
+/* ============================================================ */
+/* ======================= Ark-Lock-Pi ======================== */
+/* ============================================================ */
+
+
 module.exports = function (vorpal) {
 
 /* ============================================ */
-/* ========= Set and Get Lock Address ========= */
+/* ================== Setup =================== */
 
-/* ==== */
-/* Set */
 vorpal
-  .command('setLockAddress')
+  .command('setupLock', "This will help you setup your lock")
   .action(function(args, callback) {
-		var self = this;
-    return this.prompt({
-      type: 'address',
-      name: 'address',
-      message: 'Ark Address: ',
-    }, function(result){
-      if (result.address) {
-        try{
-          var address = result.address;
-          self.log("**seting Lock Address**");
-          write(address, ACCOUNT_FILE);
-          callback();
-        }
-        catch(error){
-          self.log("Failed: ", error);
-        }
-        callback();
-      } else {
-        self.log('lid must not be empty');
-        callback();
+    var self = this;
+    async.waterfall([
+      function(seriesCb){
+        self.prompt({
+          type: 'address',
+          name: 'address',
+          message: 'Ark Address: ',
+        }, function(result){
+          if (result.address) {
+            write(result.address, ACCOUNT_FILE);
+            self.log("**** Address was set! ****");
+            seriesCb(null, result.address);
+          } else {
+            self.log('Entries must not be empty. For your security, you need to run the "setupLock" command again.');
+            seriesCb();
+          }
+        });
+      },
+      function(lid, seriesCb){
+        self.prompt({
+          type: 'lid',
+          name: 'lid',
+          message: 'LocationID: ',
+      }, function(result){
+          if (result.lid) {
+            write(result.lid, LID_FILE);
+            self.log("**** LocationID was set! ****");
+            seriesCb(null, result.lid);
+          } else {
+            self.log('Entries must not be empty. For your security, you need to run the "setupLock" command again.');
+            seriesCb();
+          }
+        });
+      },
+      function(price, seriesCb){
+        self.prompt({
+          type: 'price',
+          name: 'price',
+          message: 'Cost of Entry: ',
+        }, function(result){
+          if (result.price) {
+            console.log("**** Cost of Entry was set! ****");
+            write(result.price, PRICE_FILE);
+            seriesCb(null, result.price);
+          } else {
+            seriesCb('Entries must not be empty. For your security, you need to run the "setupLock" command again.');
+          }
+        });
       }
-    });
-  });
-
-/* ==== */
-/* Get */
-vorpal
-  .command('getLockAddress', 'Read your locks address')
-  .action(function(args, callback, err) {
-    if (!err) {
-      var data = '';
-      var readStream = fs.createReadStream(ACCOUNT_FILE, 'utf8');
-      readStream.on('data', function(chunk) {
-        data += chunk;
-      })
-      .on('end', function() { console.log(data)})
-      .on('error', function(){ console.log("Address not found") });
-      callback();
-    };
-    callback();
-  });
-
-/* ============================================ */
-/* ============================================ */
-
-
-/* ============================================ */
-/* ======= Set Lock LocationID & Price ======= */
-
-/* ============ */
-/* setLock lid */
-
-vorpal
-  .command('setLid')
-  .action(function(args, callback) {
-		var self = this;
-    return this.prompt({
-      type: 'lid',
-      name: 'lid',
-      message: 'locationID: ',
-    }, function(result){
-      if (result.lid) {
-        try{
-          var lid = result.lid;
-          self.log("**setPrice**");
-          write(lid, LID_FILE);
-          callback();
-        }
-        catch(error){
-          self.log("Failed: ", error);
-        }
-        callback();
-      } else {
-        self.log('lid must not be empty');
-        callback();
+    ], function(err){
+      if(err){
+        self.log(err);
       }
-    });
-  });
-
-/* ============== */
-/* setLock Price */
-vorpal
-  .command('setPrice')
-  .action(function(args, callback) {
-		var self = this;
-    return this.prompt({
-      type: 'price',
-      name: 'price',
-      message: 'cost of Entry ("5"): ',
-    }, function(result){
-      if (result.price) {
-        try{
-          var price = result.price;
-          console.log("**setPrice**");
-          write(price, PRICE_FILE);
-          callback();
-        }
-        catch(error){
-          self.log("Failed: ", error);
-        }
-        callback();
-      } else {
-        self.log('Price must not be empty. Example : setPrice 5');
-        callback();
+      else{
+        self.log("successful");
       }
+      return callback();
     });
   });
 
@@ -134,7 +91,7 @@ vorpal
 
 
   /* ============================================ */
-  /* ========= Get Unlock Info ========= */
+  /* ============== Get Lock Info. ============== */
 
   vorpal
     .command('getLockInfo', 'Read your address, lid, & price from file')
@@ -236,7 +193,7 @@ vorpal
       // if data was presented & scanned
       nfcRequest.on('nfcWasRequested', nfcWasRequested);
       nfcRequest.emit('nfcWasRequested');
-    }
+    };
 
     /* ============================================ */
     /* ============================================ */
@@ -259,7 +216,7 @@ vorpal
       // if data was presented & scanned
       nfcScanned.on('nfcWasScanned', nfcWasScanned);
       nfcScanned.emit('nfcWasScanned');
-    }
+    };
     /* ============================================ */
     /* ============================================ */
 
@@ -279,7 +236,7 @@ vorpal
       // if TX valid
       checkTX.on('shouldCheckTX', shouldCheckTX);
       checkTX.emit('shouldCheckTX');
-    }
+    };
     /* ============================================ */
     /* ============================================ */
 
@@ -298,7 +255,7 @@ vorpal
       // if TX valid
       txReceived.on('txWasReceived', txWasReceived)
       txReceived.emit('txWasReceived');
-    }
+    };
 
     /* ============================================ */
     /* ============================================ */
@@ -317,7 +274,7 @@ vorpal
       // if TX valid
       unlock.on('shouldUnlock', shouldUnlock);
       unlock.emit('shouldUnlock');
-    }
+    };
 
     /* ============================================ */
     /* ============================================ */
@@ -337,7 +294,7 @@ vorpal
       //if was unlocked
       unlocked.on('wasUnlocked', wasUnlocked);
       unlocked.emit('wasUnlocked');
-    }
+    };
 
     /* ============================================ */
     /* ============================================ */
@@ -356,7 +313,7 @@ vorpal
       // if unlock was verified
       saveTX.on('shouldSaveTX', shouldSaveTX);
       saveTX.emit('shouldSaveTX');
-    }
+    };
     /* ============================================ */
     /* ============================================ */
 
@@ -364,7 +321,7 @@ vorpal
     /* ============================================ */
     /* =============== Save TX Info =============== */
     //  save TX to file
-    
+
     var saveTX = new events.EventEmitter();
 
     var shouldSaveTX = function (callback) {
@@ -375,8 +332,8 @@ vorpal
       console.log('Button Test Completed!\n');
 
       return;
-    }
-    
+    };
+
     /* ============================================ */
     /* ============================================ */
 
@@ -388,7 +345,6 @@ function write(item, toFile) {
     var newfile = toFile;
     fs.writeFile(newfile, newItem, function(err){
       if (err) throw err;
-      console.log("Item Written to file");
     });
-  } else { console.console.log("entries must not be empty"); }
-}
+  }
+};
