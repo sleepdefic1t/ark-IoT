@@ -70,7 +70,6 @@ vorpal
           if (result.price) {
             console.log("**** Cost of Entry was set! ****");
             writeJSON(result.price, 'price');
-            seriesCb(null, result.price);
           } else {
             seriesCb('Entries must not be empty. For your security, you need to run the "setupLock" command again.');
           }
