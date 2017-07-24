@@ -5,12 +5,12 @@
 
 # Alpha - Work in progress.
 
-
+```
 TODO:  
-1: Finish logic  
-2: encrypt & hide data & functions. Swiss cheese like whoa. Utilize ark-clients' Signing function. JSON File?    
-3: cleanup with prompt-flow. Switches?  Waaaay too much repetition    
-
+  1: encrypt & hide data & functions. Swiss cheese like whoa. Utilize clients Signing function.
+  2: cleanup logic.
+  3: create vendorField data
+```
 
 # Usage
 
