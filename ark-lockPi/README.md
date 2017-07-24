@@ -8,8 +8,9 @@
 ```
 TODO:  
   1: encrypt & hide data & functions. Swiss cheese like whoa. Utilize clients Signing function.
-  2: cleanup logic.
-  3: create vendorField data
+  2: cleanup & expand logic.
+  3: format & place vendorField data in TX request.
+  4: make modular and decouple from ark-client.
 ```
 
 # Usage
