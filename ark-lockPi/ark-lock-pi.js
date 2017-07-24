@@ -19,8 +19,12 @@ module.exports = function (vorpal) {
   /* ============================================ */
   /* ================== Setup =================== */
 
+// function lockSetup() {
+//   vorpal.exec('lock setup');
+// }
+
 vorpal
-  .command('setupLock', "This will help you setup your lock")
+  .command('lock setup', "This will help you setup your lock")
   .option('-i, --initial', 'Clears ALL previous lock data')
   .action(function(args, callback) {
     var self = this;
@@ -30,6 +34,9 @@ vorpal
     }
     async.waterfall([
       function(seriesCb){
+        var price;
+        var lid;
+        var price;
         self.prompt({
           type: 'address',
           name: 'address',
@@ -68,16 +75,18 @@ vorpal
           message: 'Cost of Entry: ',
         }, function(result){
           if (result.price) {
-            console.log("**** Cost of Entry was set! ****");
             writeJSON(result.price, 'price');
+            console.log("**** Cost of Entry was set! ****");
           } else {
             seriesCb('Entries must not be empty. For your security, you need to run the "setupLock" command again.');
+            seriesCb();
           }
         });
       }
     ], function(err){
       if (err) throw err;
       self.log("successful");
+      vorpal.exec('exit');
       return callback();
     });
   });
@@ -90,7 +99,7 @@ vorpal
   /* ========= Get Lock Info ========= */
 
 vorpal
-  .command('getLockInfo', 'Read your address, lid, & price from file')
+  .command('lock info', 'Read your address, lid, & price from file')
   .action(function(args, callback, err) {
     if (err) throw err;
     fs.readFile('tmp/jar.json', function readFileCallback(err, data, callback){
@@ -109,14 +118,14 @@ vorpal
   /* ============================================ */
   /* ============== Button Pushed. ============== */
   // detect button push GPIO
-
-vorpal
-  .command('pushButton', 'Simulates Button Push')
-  .action(function() {
-    console.log("Starting Button Test\n")
-    buttonPush.on('buttonWasPushed', buttonWasPushed);
-    buttonPush.emit('buttonWasPushed');
-  });
+	
+  vorpal
+    .command('lock buttonPush', 'Simulates Button Push')
+    .action(function() {
+      console.log("Starting Button Test")
+      buttonPush.on('buttonWasPushed', buttonWasPushed);
+      buttonPush.emit('buttonWasPushed');
+    });
 
     // rpio.open(00, rpio.INPUT, rpio.PULL_DOWN);
     // rpio.poll(1, buttonPush);
@@ -133,7 +142,7 @@ vorpal
   var buttonWasPushed = function () {
     console.log('**** buttonWasPushed ****');
     console.log("Getting ready to make TX Requests...\n");
-    //make data for NFC
+    //call NFC
 
     // if data was presented & scanned
     nfcData.on('dataNeedsMade', dataNeedsMade);
@@ -153,10 +162,21 @@ vorpal
 
   var dataNeedsMade = function () {
     console.log('**** dataNeedsMade ****');
-    console.log("Making NFC data...\n");
+    console.log("Making Smartbridge data...\n");
 
     //make data for NFC
 
+    fs.readFile('tmp/jar.json', function readFileCallback(err, data){
+      if (err) throw err;
+      var newJar = JSON.parse(data, 'utf8', 2);
+      let ucData = 'sleepdefIoT' + "|" + newJar.lid + "|" + newJar.price;
+      console.log(ucData);
+      // var hash = crypto.createHash('sha256');
+      fs.writeFile("tmp/ucData.dat", ucData, 'utf8', function (err) {
+        if (err) throw err;
+        return;
+      });
+    });
     // if data was presented & scanned
     nfcRequest.on('nfcWasRequested', nfcWasRequested);
     nfcRequest.emit('nfcWasRequested');
@@ -176,14 +196,16 @@ vorpal
 
     var nfcWasRequested = function () {
       console.log('**** nfcWasRequested ****');
-      console.log("Presenting data via NFC...\n")
-
+      console.log("Presenting data via NFC...")
       //present data via NFC
-
-      // if data was presented & scanned
+      fs.readFile('tmp/ucData.dat', 'utf8', function readFileCallback(err, data){
+        if (err) throw err;
+        var newData = JSON.stringify(data, 'utf8');
+    //   // if data was presented & scanned
       nfcScanned.on('nfcWasScanned', nfcWasScanned);
       nfcScanned.emit('nfcWasScanned');
-    };
+    });
+  };
     /* ============================================ */
     /* ============================================ */
 
@@ -218,10 +240,12 @@ vorpal
     var shouldCheckTX = function () {
       console.log('**** shouldCheckTX ****');
       console.log("Checking for TX...\n")
-
-      // if TX valid
+    // if (TXFound) {
       txReceived.on('txWasReceived', txWasReceived)
       txReceived.emit('txWasReceived');
+    // } else {
+    //   return;
+    // }
     };
 
     /* ============================================ */
@@ -238,9 +262,12 @@ vorpal
       console.log('**** txWasReceived ****');
       console.log("Validating...\n")
 
-      // if TX valid
+      // if (TXValid) {
       unlock.on('shouldUnlock', shouldUnlock);
       unlock.emit('shouldUnlock');
+      // } else {
+      //   return;
+      // }
     };
 
     /* ============================================ */
@@ -258,9 +285,11 @@ vorpal
       console.log('**** shouldUnlock ****');
       console.log('Unlocking...\n');
 
+      console.log('********** Unlocked **********\n');
+
       //if was unlocked
-      unlocked.on('wasUnlocked', wasUnlocked);
-      unlocked.emit('wasUnlocked');
+//       unlocked.on('wasUnlocked', wasUnlocked);
+//       unlocked.emit('wasUnlocked');
     };
 
     /* ============================================ */
@@ -269,14 +298,14 @@ vorpal
 
     /* ============================================ */
     /* ============== Verify Unlock. ============== */
-    // check if unlock was successful on pins
+    check if unlock was successful on pins
 
     var unlocked = new events.EventEmitter();
-
+    
     var wasUnlocked = function () {
       console.log('**** wasUnlocked ****');
       console.log('Verifying...\n');
-
+    
       // if unlock was verified
       saveTX.on('shouldSaveTX', shouldSaveTX);
       saveTX.emit('shouldSaveTX');
@@ -306,8 +335,8 @@ vorpal
 
 }
 
-  /* ============================================ */
-  /* =============== Data Storage =============== */
+/* ============================================ */
+/* =============== Data Storage =============== */
 
 var jsonCreate = new events.EventEmitter();
 
@@ -320,22 +349,24 @@ var shouldCreateJSON = function() {
 };
 
 function writeJSON(item, toKey) {
+  var self = this;
   fs.open('tmp/jar.json', 'r', (err) => {
     if (err) throw err;
-    fs.readFile('tmp/jar.json', 'utf8', function readFileCallback(err, data, callback){
+    fs.readFile('tmp/jar.json', function readFileCallback(err, data){
       if (err) throw err;
-      var newJar = JSON.parse(data);
+      var newJar = JSON.parse(data, 'utf8', 2);
       switch (true) {
-        case (toKey == 'address'):  newJar.address = item;  break;
-        case (toKey == 'lid'):      newJar.lid = item;  break;
-        case (toKey == 'price'):    newJar.price = item;  break;
-        case (toKey == 'receipts'): newJar.price += [item];  break;
-        default: break;
+        case (toKey == 'address'): newJar.address = item; break;
+        case (toKey == 'lid'): newJar.lid = item; break;
+        case (toKey == 'price'): newJar.price = item; break;
+        case (toKey == 'receipts'):    newJar.receipts += [item];  break;
+        default:
+        break;
       }
       var newestJar = JSON.stringify(newJar, 'utf8', 2);
       fs.writeFile("tmp/jar.json", newestJar, function (err) {
         if (err) throw err;
-        return;
+        // return;
       });
     });
   });
