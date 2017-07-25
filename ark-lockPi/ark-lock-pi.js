@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-
 var arkjs = require("arkjs");
 var async = require("async");
 var events = require('events');
@@ -7,7 +6,6 @@ var fs = require('fs');
 var Jar = require('./models/jar.js').Jar;
 // var rpio = require('rpio');
 var vorpal = require('vorpal')();
-
 
 module.exports = function (vorpal) {
 
@@ -109,7 +107,7 @@ vorpal
   /* ============================================ */
   /* ============== Button Pushed. ============== */
   // detect button push GPIO
-	
+
   vorpal
     .command('lock buttonPush', 'Simulates Button Push')
     .action(function() {
@@ -128,12 +126,16 @@ vorpal
     // 	// }
     // }
 
+
+
+
   var buttonPush = new events.EventEmitter();
 
   var buttonWasPushed = function () {
     console.log('**** buttonWasPushed ****');
     console.log("Getting ready to make TX Requests...\n");
     //call NFC
+
 
     // if data was presented & scanned
     nfcData.on('dataNeedsMade', dataNeedsMade);
@@ -163,6 +165,7 @@ vorpal
       let ucData = 'sleepdefIoT' + "|" + newJar.lid + "|" + newJar.price;
       console.log(ucData);
       // var hash = crypto.createHash('sha256');
+      // hash = hash.update(new Buffer(ucData,"utf-8")).digest();
       fs.writeFile("tmp/ucData.dat", ucData, 'utf8', function (err) {
         if (err) throw err;
         return;
@@ -192,6 +195,7 @@ vorpal
       fs.readFile('tmp/ucData.dat', 'utf8', function readFileCallback(err, data){
         if (err) throw err;
         var newData = JSON.stringify(data, 'utf8');
+        // console.log(newData);
     //   // if data was presented & scanned
       nfcScanned.on('nfcWasScanned', nfcWasScanned);
       nfcScanned.emit('nfcWasScanned');
@@ -279,8 +283,8 @@ vorpal
       console.log('********** Unlocked **********\n');
 
       //if was unlocked
-//       unlocked.on('wasUnlocked', wasUnlocked);
-//       unlocked.emit('wasUnlocked');
+      // unlocked.on('wasUnlocked', wasUnlocked);
+      // unlocked.emit('wasUnlocked');
     };
 
     /* ============================================ */
@@ -289,18 +293,18 @@ vorpal
 
     /* ============================================ */
     /* ============== Verify Unlock. ============== */
-    check if unlock was successful on pins
+    // check if unlock was successful on pins
 
-    var unlocked = new events.EventEmitter();
-    
-    var wasUnlocked = function () {
-      console.log('**** wasUnlocked ****');
-      console.log('Verifying...\n');
-    
-      // if unlock was verified
-      saveTX.on('shouldSaveTX', shouldSaveTX);
-      saveTX.emit('shouldSaveTX');
-    };
+    // var unlocked = new events.EventEmitter();
+    //
+    // var wasUnlocked = function () {
+    //   console.log('**** wasUnlocked ****');
+    //   console.log('Verifying...\n');
+    //
+    //   // if unlock was verified
+    //   saveTX.on('shouldSaveTX', shouldSaveTX);
+    //   saveTX.emit('shouldSaveTX');
+    // };
     /* ============================================ */
     /* ============================================ */
 
