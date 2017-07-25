@@ -29,7 +29,6 @@ TODO:
 
 
 # Get
-# 
 
 To clone ONLY ark-lockPi: 
 ```bash
@@ -47,7 +46,7 @@ From the ark-lockPi folder:
 ```bash
   npm install
 ``` 
-#
+
 # Use 
 ### Run main-cli: 
 ```bash
