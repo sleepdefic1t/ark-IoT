@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-var arkjs = require("arkjs");
 var async = require("async");
 var events = require('events');
 var fs = require('fs');
@@ -11,6 +9,8 @@ module.exports = function (vorpal) {
 
   /* ============================================ */
   /* ================== Setup =================== */
+
+  var writeJSON = require('./services/storage.js');
 
 vorpal
   .command('lock setup', "This will help you setup your lock")
