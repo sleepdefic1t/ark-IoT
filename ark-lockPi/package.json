@@ -1,0 +1,33 @@
+{
+  "name": "ark-lock-pi",
+  "version": "0.1.0",
+  "description": "Command Line Interface to Ark-Lock",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "setup": "node setup.js",
+    "pushButton": "node pushButton.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ark",
+    "blockchain",
+    "spv",
+    "lite",
+    "cli",
+    "lock"
+  ],
+  "bin": {
+    "ark-lock-pi": "index.js"
+  },
+  "author": "https://github.com/sleepdefic1t",
+  "license": "MIT",
+  "dependencies": {
+    "arkjs": "github:arkecosystem/ark-js#master",
+    "async": "^2.1.5",
+    "colors": "^1.1.2",
+    "figlet": "^1.2.0",
+    "request": "^2.79.0",
+    "vorpal": "^1.11.4"
+  }
+}
