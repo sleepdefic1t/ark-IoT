@@ -4,24 +4,15 @@ var arkjs = require("arkjs");
 var async = require("async");
 var events = require('events');
 var fs = require('fs');
+var Jar = require('./models/jar.js').Jar;
 // var rpio = require('rpio');
 var vorpal = require('vorpal')();
 
-var Jar = {
-  'address': '',
-  'lid': '',
-  'price': '',
-  'receipts': []
-};
 
 module.exports = function (vorpal) {
 
   /* ============================================ */
   /* ================== Setup =================== */
-
-// function lockSetup() {
-//   vorpal.exec('lock setup');
-// }
 
 vorpal
   .command('lock setup', "This will help you setup your lock")
