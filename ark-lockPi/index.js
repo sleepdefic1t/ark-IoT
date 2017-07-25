@@ -5,7 +5,7 @@ var vorpal = require('vorpal')();
 
 vorpal
   .use(require('./ark-lock-pi.js'))
-  .use(require('.services/lock.js'))
+  .use(require('./services/lock.js'))
   .show();
 
 vorpal.history('ark-lock');
