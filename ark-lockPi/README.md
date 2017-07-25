@@ -21,7 +21,7 @@
 
 ```
 TODO:  
-  1: encrypt & hide data & functions. Swiss cheese like whoa. Utilize clients Signing function.
+  1: encrypt & hide data & functions. Swiss cheese like whoa.
   2: cleanup & expand logic.
   3: format & place vendorField data in TX request.
 ```
