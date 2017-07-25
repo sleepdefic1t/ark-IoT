@@ -6,7 +6,6 @@
   "scripts": {
     "start": "node index.js",
     "setup": "node wake/setup.js",
-    "getBalance": "node wake/getBalance.js",
     "pushButton": "node wake/pushButton.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
