@@ -1,8 +1,8 @@
 var fs = require('fs');
-var Jar = require('./models/jar.js').Jar;
+var Jar = require('../models/jar.js').Jar;
 
-  /* ============================================ */
-  /* =============== JSON Storage =============== */
+/* ============================================ */
+/* =============== Data Storage =============== */
 
 var writeJSON = function writeJSON(item, toKey) {
   var self = this;
@@ -28,8 +28,4 @@ var writeJSON = function writeJSON(item, toKey) {
   });
 };
 
-module.exports = writeJSON, createJSON;
-
-  /* ============================================ */
-  /* ============================================ */
-
+module.exports = writeJSON;
