@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "setup": "node onWake/setup.js",
-    "getBalance": "node onWake/getBalance.js",
-    "pushButton": "node onWake/pushButton.js",
+    "setup": "node wake/setup.js",
+    "getBalance": "node wake/getBalance.js",
+    "pushButton": "node wake/pushButton.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
