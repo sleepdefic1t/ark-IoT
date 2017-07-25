@@ -27,31 +27,42 @@ TODO:
   4: make modular and decouple from ark-client.
 ```
 
-# Usage
 
-For use with  [Ark-Client](https://github.com/arkecosystem/ark-client).
 
-Get the source for Ark-Client: 
-```bash
-  git clone https://github.com/arkecosystem/ark-client
-``` 
-
+# Get
 # 
 
-Download ark-lock-pi from this Repo or by command line,  
-to the "ark-client" directory you just cloned:
+To clone ONLY ark-lockPi: 
 ```bash
-  cd ark-client
-  wget https://github.com/sleepdefic1t/ark-IoT/blob/master/ark-lockPi/ark-lock-pi.js
+  cd 'Whatever directory you want ark-lockPi to go'
+  git clone --depth 1 https://github.com/sleepdefic1t/ark-IoT.git ark-lockPi 
+  cd ark-lockPi 
+  git filter-branch --prune-empty --subdirectory-filter ark-lockPi HEAD
 ``` 
 
-# 
-
-Open "index.js" from the "Ark-Client" directory with your favorite code editor,  
-and insert this requirement:
-```nodejs
-vorpal
-  .use(require('./ark-lock-pi.js'))
-  .show();
+# Install
+#
+From the ark-lockPi folder:
+```bash
+  npm install
+``` 
+#
+# Use 
+#
+### Run main-cli: 
+```bash
+  npm run start
 ```
-# 
+#
+#
+### Run lock setup: 
+##### prompts for Ark Address, LocationID of the Lock, and Price(cost of unlock)
+```bash
+  npm run setup
+``` 
+#
+### Simulate Button Press
+```bash
+  npm run pushButton
+``` 
+#
