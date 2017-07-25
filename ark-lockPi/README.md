@@ -24,7 +24,6 @@ TODO:
   1: encrypt & hide data & functions. Swiss cheese like whoa. Utilize clients Signing function.
   2: cleanup & expand logic.
   3: format & place vendorField data in TX request.
-  4: make modular and decouple from ark-client.
 ```
 
 
@@ -34,26 +33,26 @@ TODO:
 
 To clone ONLY ark-lockPi: 
 ```bash
-  cd 'Whatever directory you want ark-lockPi to go'
+  cd "to whatever directory you want ark-lockPi to go" 
+  
   git clone --depth 1 https://github.com/sleepdefic1t/ark-IoT.git ark-lockPi 
+  
   cd ark-lockPi 
-  git filter-branch --prune-empty --subdirectory-filter ark-lockPi HEAD
+  
+  git filter-branch --prune-empty --subdirectory-filter ark-lockPi HEAD 
 ``` 
 
 # Install
-#
 From the ark-lockPi folder:
 ```bash
   npm install
 ``` 
 #
 # Use 
-#
 ### Run main-cli: 
 ```bash
   npm run start
 ```
-#
 #
 ### Run lock setup: 
 ##### prompts for Ark Address, LocationID of the Lock, and Price(cost of unlock)
