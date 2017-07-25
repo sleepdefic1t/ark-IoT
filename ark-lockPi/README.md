@@ -34,9 +34,7 @@ To clone ONLY ark-lockPi:
 - ```cd``` to the directory you want ark-lockPi in. 
 - copy the entire one-line command.
 ```bash
-  git clone --depth 1 https://github.com/sleepdefic1t/ark-IoT.git ark-lockPi 
-  && cd ark-lockPi 
-  && git filter-branch --prune-empty --subdirectory-filter ark-lockPi HEAD
+  git clone --depth 1 https://github.com/sleepdefic1t/ark-IoT.git ark-lockPi && cd ark-lockPi && git filter-branch --prune-empty --subdirectory-filter ark-lockPi HEAD
 ``` 
 
 # Install
