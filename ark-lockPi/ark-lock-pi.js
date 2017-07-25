@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 var async = require("async");
 var events = require('events');
 var fs = require('fs');
@@ -6,103 +7,6 @@ var Jar = require('./models/jar.js').Jar;
 var vorpal = require('vorpal')();
 
 module.exports = function (vorpal) {
-
-  /* ============================================ */
-  /* ================== Setup =================== */
-
-  var writeJSON = require('./services/storage.js');
-
-vorpal
-  .command('lock setup', "This will help you setup your lock")
-  .option('-i, --initial', 'Clears ALL previous lock data')
-  .action(function(args, callback) {
-    var self = this;
-    if (args.options.initial) {
-      jsonCreate.on('shouldCreateJSON', shouldCreateJSON);
-      jsonCreate.emit('shouldCreateJSON');
-    }
-    async.waterfall([
-      function(seriesCb){
-        var price;
-        var lid;
-        var price;
-        self.prompt({
-          type: 'address',
-          name: 'address',
-          message: 'Ark Address: ',
-        }, function(result){
-          if (result.address) {
-            writeJSON(result.address, 'address');
-            self.log("**** Address was set! ****");
-            seriesCb(null, result.address);
-          } else {
-            self.log('Entries must not be empty. For your security, you need to run the "setupLock" command again.');
-            seriesCb();
-          }
-        });
-      },
-      function(lid, seriesCb){
-        self.prompt({
-          type: 'lid',
-          name: 'lid',
-          message: 'LocationID: ',
-        }, function(result){
-          if (result.lid) {
-            writeJSON(result.lid, 'lid');
-            self.log("**** LocationID was set! ****");
-            seriesCb(null, result.lid);
-          } else {
-            self.log('Entries must not be empty. For your security, you need to run the "setupLock" command again.');
-            seriesCb();
-          }
-        });
-      },
-      function(price, seriesCb){
-        self.prompt({
-          type: 'price',
-          name: 'price',
-          message: 'Cost of Entry: ',
-        }, function(result){
-          if (result.price) {
-            writeJSON(result.price, 'price');
-            console.log("**** Cost of Entry was set! ****");
-          } else {
-            seriesCb('Entries must not be empty. For your security, you need to run the "setupLock" command again.');
-            seriesCb();
-          }
-        });
-      }
-    ], function(err){
-      if (err) throw err;
-      self.log("successful");
-      vorpal.exec('exit');
-      return callback();
-    });
-  });
-
-  /* ============================================ */
-  /* ============================================ */
-
-
-  /* ============================================ */
-  /* ========= Get Lock Info ========= */
-
-vorpal
-  .command('lock info', 'Read your address, lid, & price from file')
-  .action(function(args, callback, err) {
-    if (err) throw err;
-    fs.readFile('tmp/jar.json', function readFileCallback(err, data, callback){
-      if (err) throw err;
-      var parsedJar = JSON.parse(data);
-      var stringedJar = JSON.stringify(parsedJar, 'utf8', 2);
-      return console.log(stringedJar);
-    });
-    callback();
-  });
-
-  /* ============================================ */
-  /* ============================================ */
-
 
   /* ============================================ */
   /* ============== Button Pushed. ============== */
@@ -125,9 +29,6 @@ vorpal
     //     nfcData.emit('dataNeedsMade');
     // 	// }
     // }
-
-
-
 
   var buttonPush = new events.EventEmitter();
 
@@ -166,7 +67,7 @@ vorpal
       console.log(ucData);
       // var hash = crypto.createHash('sha256');
       // hash = hash.update(new Buffer(ucData,"utf-8")).digest();
-      fs.writeFile("tmp/ucData.dat", ucData, 'utf8', function (err) {
+      fs.writeFile("tmp/data.dat", ucData, 'utf8', function (err) {
         if (err) throw err;
         return;
       });
@@ -192,7 +93,7 @@ vorpal
       console.log('**** nfcWasRequested ****');
       console.log("Presenting data via NFC...")
       //present data via NFC
-      fs.readFile('tmp/ucData.dat', 'utf8', function readFileCallback(err, data){
+      fs.readFile('tmp/data.dat', 'utf8', function readFileCallback(err, data){
         if (err) throw err;
         var newData = JSON.stringify(data, 'utf8');
         // console.log(newData);
@@ -330,39 +231,3 @@ vorpal
 
 }
 
-/* ============================================ */
-/* =============== Data Storage =============== */
-
-var jsonCreate = new events.EventEmitter();
-
-var shouldCreateJSON = function() {
-  var json = JSON.stringify(Jar);
-  fs.writeFile('tmp/jar.json', json, 'utf8', 2, function(err) {
-    if (err) throw err;
-  });
-  return;
-};
-
-function writeJSON(item, toKey) {
-  var self = this;
-  fs.open('tmp/jar.json', 'r', (err) => {
-    if (err) throw err;
-    fs.readFile('tmp/jar.json', function readFileCallback(err, data){
-      if (err) throw err;
-      var newJar = JSON.parse(data, 'utf8', 2);
-      switch (true) {
-        case (toKey == 'address'): newJar.address = item; break;
-        case (toKey == 'lid'): newJar.lid = item; break;
-        case (toKey == 'price'): newJar.price = item; break;
-        case (toKey == 'receipts'):    newJar.receipts += [item];  break;
-        default:
-        break;
-      }
-      var newestJar = JSON.stringify(newJar, 'utf8', 2);
-      fs.writeFile("tmp/jar.json", newestJar, function (err) {
-        if (err) throw err;
-        // return;
-      });
-    });
-  });
-};
