@@ -1,11 +1,11 @@
 var vorpal = require('vorpal')();
 
 vorpal
-  .use(require('../ark-lock-pi.js'))
+  .use(require('../services/lock.js'))
   .show();
 
 var pushButton = function() {
-  vorpal.exec('lock buttonPush');
+  vorpal.exec('lock pushButton');
   vorpal.exec('exit');
 };
 
