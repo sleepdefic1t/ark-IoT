@@ -26,11 +26,23 @@ TODO:
   3: format & place vendorField data in TX request.
 ```
 
+# Requirements 
 
+- [Git](https://git-scm.com/downloads) | [@git](https://github.com/git/) 
+  
+- [nodejs/npm](https://nodejs.org/en/download/) | [@nodejs](https://github.com/nodejs/) 
+  
+  
 
 # Get
 
-To clone ONLY ark-lockPi:  
+Experimental: "Front Door Delivery"
+- Clones, Installs, and Launches.
+```bash
+git clone --depth 1 https://github.com/sleepdefic1t/ark-IoT.git ark-lockPi && cd ark-lockPi && git filter-branch --prune-empty --subdirectory-filter ark-lockPi HEAD && npm install && npm run start
+```
+
+To download ark-lockPi:  
 - ```cd``` to the directory you want ark-lockPi in. 
 - copy the entire one-line command.
 ```bash
