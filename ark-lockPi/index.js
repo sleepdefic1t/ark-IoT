@@ -11,7 +11,7 @@ vorpal
 vorpal.history('ark-lock');
 
 vorpal.log(colors.cyan(figlet.textSync("|||||||||||||||||||||||||||||", "digital")));
-vorpal.log(colors.cyan(figlet.textSync("|| Ark-Lock-Pi ||", "cybermedium")));
+vorpal.log(colors.rainbow(figlet.textSync("|| Ark-Lock-Pi ||", "cybermedium")));
 vorpal.log(colors.cyan(figlet.textSync("|||||||| sleepdefIoT ||||||||", "digital")));
 
 vorpal
