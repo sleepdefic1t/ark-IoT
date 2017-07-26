@@ -4,8 +4,9 @@ var colors = require("colors");
 var vorpal = require('vorpal')();
 
 vorpal
-  .use(require('./ark-lock-pi.js'))
   .use(require('./services/lock.js'))
+  .use(require('./services/tx.js'))
+  .use(require('./services/nfc.js'))
   .show();
 
 vorpal.history('ark-lock');
