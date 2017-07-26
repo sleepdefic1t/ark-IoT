@@ -41,6 +41,7 @@ Experimental: "Front Door Delivery"
 ```bash
 git clone --depth 1 https://github.com/sleepdefic1t/ark-IoT.git ark-lockPi && cd ark-lockPi && git filter-branch --prune-empty --subdirectory-filter ark-lockPi HEAD && npm install && npm run start
 ```
+#
 
 To download ark-lockPi:  
 - ```cd``` to the directory you want ark-lockPi in. 
