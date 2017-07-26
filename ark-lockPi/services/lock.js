@@ -28,14 +28,14 @@ module.exports = function (vorpal) {
             if (result.address) {
               writeJSON(result.address, 'address');
               self.log("**** Address was set! ****");
-              seriesCb(null, result.address);
+              seriesCb(null, result.address, result.lid);
             } else {
               self.log('Entries must not be empty. For your security, you need to run the "setupLock" command again.');
               seriesCb();
             }
           });
         },
-        function(lid, seriesCb){
+        function(address, lid, seriesCb){
           self.prompt({
             type: 'lid',
             name: 'lid',
@@ -51,7 +51,7 @@ module.exports = function (vorpal) {
             }
           });
         },
-        function(price, seriesCb){
+        function(address, seriesCb){
           self.prompt({
             type: 'price',
             name: 'price',
@@ -60,17 +60,16 @@ module.exports = function (vorpal) {
             if (result.price) {
               writeJSON(result.price, 'price');
               console.log("**** Cost of Entry was set! ****");
+              seriesCb(null, address);
             } else {
               seriesCb('Entries must not be empty. For your security, you need to run the "setupLock" command again.');
-              seriesCb();
             }
           });
         }
-      ], function(err){
+      ], function(err, result){
         if (err) throw err;
         self.log("successful");
-        vorpal.exec('exit');
-        return callback();
+        callback();
       });
   })
 
