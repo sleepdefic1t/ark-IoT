@@ -48,4 +48,4 @@ var vorpal = require('vorpal')();
 module.exports = {
   nfcWasRequested: nfcWasRequested,
   nfcWasScanned: nfcWasScanned
-};
+}
