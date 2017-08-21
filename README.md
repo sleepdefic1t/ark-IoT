@@ -17,6 +17,7 @@ Unofficial Ark-IoT Community Member Repo
  +-+-+-+-+-+-+-+-+ +-+-+-+-+-+-+-+-+-+-+-+ +-+-+-+-+-+-+-+-+
  ````
 
+#  
 
 ## What is Ark?
 
@@ -34,7 +35,7 @@ Unofficial Ark-IoT Community Member Repo
 [ACES Youtube Video Link](http://www.youtube.com/watch?v=qugC8sQFR40 "ACES") || [ACES REPO](https://github.com/bradyo/aces-app)  
 [![ACES](http://img.youtube.com/vi/qugC8sQFR40/0.jpg)](http://www.youtube.com/watch?v=qugC8sQFR40 "ACES")  
 
-#  
+ 
 
 ## Where do I get a Raspberry Pi?  
 - [Adafruit](https://www.adafruit.com/raspberrypi)  
@@ -44,7 +45,7 @@ Unofficial Ark-IoT Community Member Repo
 - [Amazon](https://www.amazon.com/Raspberry-Pi/pages/5811495011)  
 
 
-#  
+
 
 ## What is a good OS to start with?
 
@@ -54,20 +55,18 @@ Unofficial Ark-IoT Community Member Repo
 - [RASPBIAN STRETCH WITH DESKTOP](https://www.raspberrypi.org/downloads/raspbian/)  
    Image with desktop based on Debian Stretch
 
-
-#  
+ 
 
 
 ## Setting up your Pi
 
 #### Headless-mode (SSH-only Access)
 
-#
 
-[HowToOTGFast](https://gist.github.com/gbaman/975e2db164b3ca2b51ae11e45e8fd40a)  
 
-#### Setting up Pi Zero OTG - The quick way (No USB keyboard, mouse, HDMI monitor needed)    
-    [More details](http://blog.gbaman.info/?p=791](http://blog.gbaman.info/?p=791)     
+## [HowToOTGFast](https://gist.github.com/gbaman/975e2db164b3ca2b51ae11e45e8fd40a)  
+  Setting up Pi Zero OTG: The quick way (No USB keyboard, mouse, HDMI monitor needed)  
+  [..more info](http://blog.gbaman.info/?p=791 "Raspberry Pi Zero – PROGRAMMING OVER USB! Blog Post")  
     
  For this method, alongside your Pi Zero, 
     MicroUSB cable and MicroSD card,  
