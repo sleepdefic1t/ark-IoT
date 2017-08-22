@@ -103,7 +103,8 @@ Unofficial Ark-IoT Community Member Repo
 #### NodeJS
 
 [node-pi-zero](https://github.com/sdesalas/node-pi-zero)
-
-
+```bash
+curl -O https://raw.githubusercontent.com/sdesalas/node-pi-zero/master/install-node-v.last.sh && sudo chmod +x install-node-v.last.sh && ./install-node-v.last.sh
+```
 
 more coming soon...
