@@ -28,17 +28,14 @@ Unofficial Ark-IoT Community Member Repo
   - Designed for mass adoption that will deliver the services that consumers want, and developers need. ~[source](https://ark.io/)  
  
  
-[The ARK's Smartbridge Youtube Link](http://www.youtube.com/watch?v=Fb985Ac_gSY "The ARK's Smartbridge Technology")  
+[ARK Smartbridge Youtube Link](http://www.youtube.com/watch?v=Fb985Ac_gSY "ARK Smartbridge Technology")  
+<img src="http://img.youtube.com/vi/Fb985Ac_gSY/0.jpg" alt="ARK Smartbridge Technology" width="240" height="180">
 
-<img src="http://img.youtube.com/vi/Fb985Ac_gSY/0.jpg" alt="The ARK's Smartbridge Technology" width="240" height="180" href="http://www.youtube.com/watch?v=Fb985Ac_gSY" >  
-
-
-
-  
+[ACES Youtube Video Link](http://www.youtube.com/watch?v=qugC8sQFR40 "ARK Smartbridge Technology") || [ACES REPO](https://github.com/bradyo/aces-app)   
+<img src="http://img.youtube.com/vi/qugC8sQFR40/0.jpg" alt="ACES" width="240" height="180"> 
 
 
-[ACES Youtube Video Link](http://www.youtube.com/watch?v=qugC8sQFR40 "ACES") || [ACES REPO](https://github.com/bradyo/aces-app)  
-[![ACES](http://img.youtube.com/vi/qugC8sQFR40/0.jpg)](http://www.youtube.com/watch?v=qugC8sQFR40 "ACES")  
+
 
  
 
