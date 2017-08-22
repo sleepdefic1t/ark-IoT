@@ -1,4 +1,4 @@
-## [HowToOTGFast](https://gist.github.com/gbaman/975e2db164b3ca2b51ae11e45e8fd40a)  
+## [ark-IoT](https://github.com/sleepdefic1t/ark-IoT)/[Setup](https://github.com/sleepdefic1t/ark-IoT/tree/master/Setup)/[HowToOTGFast](https://github.com/sleepdefic1t/ark-IoT/blob/master/Setup/HowToOTGFast.md "ark-IoT/Setup/HowToOGTFast")   
   Setting up Pi Zero OTG: The quick way (No USB keyboard, mouse, HDMI monitor needed)  
   [..more info](http://blog.gbaman.info/?p=791 "Raspberry Pi Zero – PROGRAMMING OVER USB! Blog Post")  
     
