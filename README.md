@@ -15,7 +15,22 @@ Unofficial Ark-IoT Community Member Repo
  +-+-+-+-+-+-+-+-+ +-+-+-+-+-+-+-+-+-+-+-+ +-+-+-+-+-+-+-+-+
  ||||||||||||||||| |s|l|e|e|p|d|e|f|I|o|T| |||||||||||||||||
  +-+-+-+-+-+-+-+-+ +-+-+-+-+-+-+-+-+-+-+-+ +-+-+-+-+-+-+-+-+
- ````
+ ````  
+
+## What is Ark-IoT?
+A collection of Internet of Things & Ark-related projects and resources.
+
+- [ ] ARK-Lock
+- [ ] ARK-NFC
+- [ ] ARK-NodeRelay
+- [ ] ARK-VPN
+- [ ] ARK-PirateBox
+- [ ] ARK-PiWallet
+- [ ] TBA*
+- [ ] TBA*
+- [ ] TBA*
+- [ ] Your suggestions!
+
 
 #  
 
