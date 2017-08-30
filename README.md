@@ -66,4 +66,16 @@ Feel free to suggest any resources and improvements!
 
 # 
 
+# Learning Resources
+
+#### Arduino
+
+#### Raspberry Pi
+
+#### Networking
+
+[**Open Mesh Wireless Network Introduction**](https://www.youtube.com/watch?v=1YOoT3NxgYg) ~ [**Eli the Computer Guy**](https://www.youtube.com/channel/UCD4EOyXKjfDUhCI6jlOZZYQ)
+
+
+#
 more coming soon...
