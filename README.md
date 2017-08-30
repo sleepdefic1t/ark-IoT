@@ -47,26 +47,16 @@ A collection of Internet of Things & Ark-related projects and resources.
 <img src="http://img.youtube.com/vi/Fb985Ac_gSY/0.jpg" alt="ARK Smartbridge Technology" width="240" height="180">
 
 [ACES Youtube Video Link](http://www.youtube.com/watch?v=qugC8sQFR40 "ARK Smartbridge Technology") || [ACES REPO](https://github.com/bradyo/aces-app)   
-<img src="http://img.youtube.com/vi/qugC8sQFR40/0.jpg" alt="ACES" width="240" height="180"> 
+<img src="http://img.youtube.com/vi/qugC8sQFR40/0.jpg" alt="ACES" width="240" height="180">  
 
 
-### [Getting Started](https://github.com/sleepdefic1t/ark-IoT/blob/master/GETTING_STARTED.md)  
+# [**Getting Started**](https://github.com/sleepdefic1t/ark-IoT/blob/master/GETTING_STARTED.md)  
 
 It can be confusing diving into the world of IoT,
 and we all move forward together!  
 Feel free to suggest any resources and improvements! 
 
-##### Io... what?
- 
-#### Arduino
-coming soon...
-
-#### Raspberry Pi
-
-- [Where do I get a Raspberry Pi?](https://github.com/sleepdefic1t/ark-IoT/blob/master/GETTING_STARTED.md)  
-- [What is a good OS to start with?](https://github.com/sleepdefic1t/ark-IoT/blob/master/GETTING_STARTED.md)  
-- [Setting up your pi ](https://github.com/sleepdefic1t/ark-IoT/blob/master/GETTING_STARTED.md)  
-
+Check out our [**Getting Started**](https://github.com/sleepdefic1t/ark-IoT/blob/master/GETTING_STARTED.md) guide to jump right in.
 
 # 
 
