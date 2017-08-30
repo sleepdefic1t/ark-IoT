@@ -26,6 +26,30 @@ TODO:
   3: format & place vendorField data in TX request.
 ```
 
+# Parts Used
+
+- **Mainboard**: 
+  -  [**Raspberry Pi Zero W**](https://www.raspberrypi.org/products/raspberry-pi-zero-w/)
+
+- **NFC**: 
+  -  [**DFRobot NFC Module**](https://www.dfrobot.com/product-892.html) by [DFRobot](https://dfrobot.com/)
+     - [DFRobots' NFC Module Wiki Page](https://www.dfrobot.com/wiki/index.php/NFC_Module_for_Arduino_(SKU:DFR0231))
+
+- **Prototyping**:
+  -  [**Zebra Zero Plus Breadboard**](https://c4labs.net/products/zebra-zero-plus-for-raspberry-pi-zero-wood-1) by [**C4Labs**](https://c4labs.net)
+
+- **Tools**:
+  -  Micro USB power supply.
+     - Your choice 5v  >=500mAh.
+     - 5v  >=1Ah(1,000mAh) Recommended.
+       - [**NOTE: Don't use cheap power supplies**](https://www.google.com/search?q=dangers+of+cheap+usb+power+supplies).
+  -  Micro-USB Cable for headless/SSH setup
+  -  Soldering Station or Kit
+
+- **Misc**:
+  -  [**2x20 Female GPIO Header**](https://www.adafruit.com/product/2222)
+
+
 # Requirements 
 
 - [Git](https://git-scm.com/downloads) | [@git](https://github.com/git/) 
