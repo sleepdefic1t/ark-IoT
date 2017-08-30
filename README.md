@@ -50,17 +50,21 @@ A collection of Internet of Things & Ark-related projects and resources.
 <img src="http://img.youtube.com/vi/qugC8sQFR40/0.jpg" alt="ACES" width="240" height="180"> 
 
 
+### [Getting Started](https://github.com/sleepdefic1t/ark-IoT/blob/master/GETTING_STARTED.md)  
 
-## [Getting Started](https://github.com/sleepdefic1t/ark-IoT/blob/master/GETTING_STARTED.md)  
-
-It can be confusing diving into the world of raspberry pi,
+It can be confusing diving into the world of IoT,
 and we all move forward together!  
 Feel free to suggest any resources and improvements! 
+
+##### Io... what?
  
+#### Arduino
+coming soon...
+
+#### Raspberry Pi
+
 - [Where do I get a Raspberry Pi?](https://github.com/sleepdefic1t/ark-IoT/blob/master/GETTING_STARTED.md)  
-
 - [What is a good OS to start with?](https://github.com/sleepdefic1t/ark-IoT/blob/master/GETTING_STARTED.md)  
-
 - [Setting up your pi ](https://github.com/sleepdefic1t/ark-IoT/blob/master/GETTING_STARTED.md)  
 
 
@@ -72,10 +76,17 @@ Feel free to suggest any resources and improvements!
 
 #### Raspberry Pi
 
+- [**Getting started with Raspberry Pi**](https://opensource.com/article/16/12/getting-started-raspberry-pi) ~ [**@OpenSource.com**](https://opensource.com)
+
+#### IoT
+
+- [**Getting started with IoT**](https://www.raspberrypi.org/blog/getting-started-with-iot/)
+
 #### Networking
 
-[**Open Mesh Wireless Network Introduction**](https://www.youtube.com/watch?v=1YOoT3NxgYg) ~ [**Eli the Computer Guy**](https://www.youtube.com/channel/UCD4EOyXKjfDUhCI6jlOZZYQ)
+- [**Open Mesh Wireless Network Introduction**](https://www.youtube.com/watch?v=1YOoT3NxgYg) ~ [**Eli the Computer Guy**](https://www.youtube.com/channel/UCD4EOyXKjfDUhCI6jlOZZYQ)
 
 
 #
+
 more coming soon...
