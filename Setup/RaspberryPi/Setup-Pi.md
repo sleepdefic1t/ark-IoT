@@ -18,4 +18,5 @@
 curl -O https://raw.githubusercontent.com/sdesalas/node-pi-zero/master/install-node-v.last.sh && sudo chmod +x install-node-v.last.sh && ./install-node-v.last.sh
 ```
 
-more coming soon...
+# Resources:
+- [**GPIOZero: Docs**](https://gpiozero.readthedocs.io/en/stable/)
