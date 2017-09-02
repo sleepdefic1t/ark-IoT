@@ -1,18 +1,17 @@
 // #!/usr/bin/env node
+
 var async = require("async");
+var button = require('../services/button.js');
 var fs = require('fs');
 var Jar = require('../models/jar.js').Jar;
 var storage = require('./storage.js');    
-
 var vorpal = require('vorpal')();
 
 module.exports = function (vorpal) {
 
-  /* ============================================ */
-  /* ================== Setup =================== */
-//   var writeJSON = require('./storage.js');
-  var emptyMessageWarning = 'Entries must not be empty. For your security, you need to run the "setupLock" command again.'
-  vorpal
+var emptyMessageWarning = 'Entries must not be empty. For your security, you need to run the "setupLock" command again.'
+
+vorpal
     .command('lock setup', "Setup your lock")
     .action(function(args, callback) {
         var self = this;
@@ -72,13 +71,6 @@ module.exports = function (vorpal) {
         });
     });
 
-  /* ============================================ */
-  /* ============================================ */
-
-
-  /* ============================================ */
-  /* ========= Get Lock Info ========= */
-
   vorpal
     .command('lock info', 'View address, lID, & price')
     .action(function(args, callback, err) {
@@ -92,19 +84,10 @@ module.exports = function (vorpal) {
       callback();
   });
 
-  /* ============================================ */
-  /* ============================================ */
-
-
-  /* ============================================ */
-  /* ============== Button Pushed. ============== */
-
   vorpal
     .command('lock pushButton', 'Simulates Button Push')
     .action(function() {
       console.log("Starting Button Test");
-
-      var button = require('../services/button.js');
       button.wasPushed();
   })
 
