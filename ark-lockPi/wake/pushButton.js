@@ -1,12 +1,7 @@
-var vorpal = require('vorpal')();
-
-vorpal
-  .use(require('../services/lock.js'))
-  .show();
+var button = require('../services/button.js');
 
 var pushButton = function() {
-  vorpal.exec('lock pushButton');
-  vorpal.exec('exit');
+  button.wasPushed();
 };
 
 pushButton();
