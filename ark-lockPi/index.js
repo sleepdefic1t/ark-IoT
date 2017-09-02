@@ -1,20 +1,19 @@
 #!/usr/bin/env node
-var figlet = require("figlet");
-var colors = require("colors");
+
 var vorpal = require('vorpal')();
 
 vorpal
-  .use(require('./services/lock.js'))
-  .use(require('./services/tx.js'))
-  .use(require('./services/nfc.js'))
+  .use(require('./services/main.js'))
   .show();
 
-vorpal.history('ark-lock');
+vorpal.history('ark-lockPi');
 
-vorpal.log(colors.cyan(figlet.textSync("|||||||||||||||||||||||||||||", "digital")));
-vorpal.log(colors.rainbow(figlet.textSync("|| Ark-Lock-Pi ||", "cybermedium")));
-vorpal.log(colors.cyan(figlet.textSync("|||||||| sleepdefIoT ||||||||", "digital")));
+console.log("");
+console.log('║▋▎║▋▎▋║▉║▋║ Ѧ ║▋║▎█║ ▋▎▋║║');
+console.log('║█║ ark-lock-pi | 0.3.0 ║█║');
+console.log("");
 
 vorpal
   .delimiter('ark-lockPi>')
   .show();
+  
