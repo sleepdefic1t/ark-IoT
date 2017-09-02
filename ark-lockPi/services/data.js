@@ -2,7 +2,6 @@ var crypto = require("crypto");
 var network = require('./network.js');
 var storage = require('./storage.js');
 
-
 function forNFC() {
     console.log('\n **** data.forNFC: Requested ****');
     var data;
@@ -15,7 +14,6 @@ function forNFC() {
     };
     return data;
 };
-
 
 function hashed() {
     console.log('**** data.hashed: Requested **** \n');
