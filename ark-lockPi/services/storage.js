@@ -1,8 +1,5 @@
 var fs = require('fs');
 
-/* ============================================ */
-/* =============== Data Storage =============== */
-
 function writeJSON(item, toKey) {
     console.log('\n **** storage.writeJSON: Called **** \n');
     fs.open('tmp/jar.json', 'r', (err) => {
@@ -65,6 +62,5 @@ module.exports = {
     addReceipt: addReceipt,
     jarAddress: jarAddress,
     stringifiedJar: stringifiedJar,
-    // writeDataDat: writeDataDat,
     writeJSON: writeJSON
 }
