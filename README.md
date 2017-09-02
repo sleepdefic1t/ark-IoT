@@ -5,7 +5,7 @@ Unofficial Ark-IoT Community Member Repo
 
 ## [ark-lockPi](https://github.com/sleepdefic1t/ark-IoT/tree/master/ark-lockPi)
 ```bash
-║▋▎▋▎▋║▉▋║   Ѧ   ▋║▎█ ▋▎▋║║
+║▋▎║▋▎▋║▉║▋║ Ѧ ║▋║▎█║ ▋▎▋║║
 ║█║ ark-lock-pi | 0.3.0 ║█║
  ````  
 
@@ -18,7 +18,7 @@ A collection of Internet of Things & Ark-related projects and resources.
 - [ ] ARK-VPN
 - [ ] ARK-PirateBox
 - [ ] ARK-PiWallet
-- [ ] TBA*
+- [ ] ARK-PowerMeter
 - [ ] TBA*
 - [ ] TBA*
 - [ ] Your suggestions!
