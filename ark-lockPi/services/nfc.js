@@ -1,51 +1,53 @@
-var fs = require('fs');
-var Jar = require('../models/jar.js').Jar;
-// var rpio = require('rpio');
-var vorpal = require('vorpal')();
+var data = require('./data.js');
+var rpio = require('rpio');
+var transaction = require('./transaction.js');
+var network = require('./network.js');
 
 
-  /* ============================================ */
-  /* ========== Present NFC TX Request ========== */
+function dataWasRequested() {
+  console.log('\n **** nfc.dataWasRequested ****');
+  console.log('   making NDEF Data... \n');    
+  if (network.isConnectable() === true) {
+    var nfcData = data.forNFC();
+    console.log('\n *NDEF Data made. Ready to present* \n');  
+    powerOnNFC();
+    presentNDEFWith(nfcData);
+  };
+};
 
-  // wake NFC GPIO
-  // present tx request via nfc
-  //rpio.open(01, rpio.INPUT, rpio.PULL_DOWN);
-  function nfcWasRequested() {
-    console.log('**** nfcWasRequested ****');
-    console.log("Presenting data via NFC... \n")
-      //present data via NFC
-    fs.readFile('tmp/data.dat', 'utf8', function readFileCallback(err, data){
-      if (err) throw err;
-      var newData = JSON.stringify(data, 'utf8');
-      // console.log(newData);
-    //   // if data was presented & scanned
-    });
-    var nfcWasScanned = require('./nfc.js').nfcWasScanned;
-    nfcWasScanned();
-  }
-  /* ============================================ */
-  /* ============================================ */
+function presentNDEFWith(nfcData) {
+  console.log('\n **** nfc.presentNDEFWith|nfcData: Called ****');
+  console.log('   presenting NDEF Data via NFC... \n');      
+  post(nfcData);
+};
+
+function post(nfcData){
+  console.log('\n **** nfc.post|nfcData: Called **** \n');
+  // if okay, continue
+  console.log('\n *NDEF Data was shared... Notifying system..* \n');      
+  wasPostedWith(nfcData);
+}
 
 
-  /* ============================================ */
-  /* ========== NFC TX Acknowledgement ========== */
+function powerOn() {
+  console.log('\n **** nfc.powerOn: Called **** \n');
+    rpio.open(2, rpio.OUTPUT, rpio.LOW);
+    /* On */
+    rpio.write(24, rpio.HIGH);
+};
+function powerOff() {
+  console.log('\n **** nfc.powerOff: Called **** \n');  
+    /* Off */
+    rpio.write(2, rpio.LOW);
+    wasUnlocked();
+};
 
-  // confirm that NFC data was scanned
-  // nfc sleep after nfc scanned
-  // triggers check for TX cycle
-  function nfcWasScanned() {
-    console.log('**** nfcWasScanned ****');
-    console.log("Confirming NFC was scanned...\n");
-
-    // if TX valid
-    var shouldFindTX = require('./tx.js').shouldFindTX;
-    shouldFindTX();
-  }
-  /* ============================================ */
-  /* ============================================ */
-
+function wasPostedWith(nfcData) {    
+  console.log('\n **** nfc.wasPostedWith|data ****');
+  console.log('   preparing to check for transaction confirmation.. \n');      
+  transaction.findWith(nfcData.hash);
+};
 
 module.exports = {
-  nfcWasRequested: nfcWasRequested,
-  nfcWasScanned: nfcWasScanned
-}
+  dataWasRequested: dataWasRequested
+};
