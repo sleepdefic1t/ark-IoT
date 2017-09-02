@@ -29,7 +29,7 @@ function checkRequest(body, hash) {
     };
     var indexOfHash = vendorFields.indexOf(hash);
     // var indexOfHash = vendorFields.indexOf("║▌║█║▌  Ѧ  ║▌║▌█");        // testHash     
-    if (indexOfHash > -1 && confirmations[indexOfHash] > 3) {\        
+    if (indexOfHash > -1 && confirmations[indexOfHash] > 3) {     
         console.log('\n Transaction Found! Starting unlock sequence.. \n');
         wasFound();
     } else {
