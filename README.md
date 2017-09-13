@@ -1,9 +1,4 @@
-
-
-<img src="https://github.com/sleepdefic1t/ark-IoT/blob/master/ark_iot_huzzah_pn532_image.png" width="350">
-
-
-Ark-IoT Community Repo
+# Ark-IoT Community Repo
 
 # Projects:
 
