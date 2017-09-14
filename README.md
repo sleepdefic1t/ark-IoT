@@ -1,4 +1,4 @@
-# Ark-IoT Community Repo
+<img src="https://github.com/sleepdefic1t/ark-IoT/blob/master/ark_iot_logo.png" width="350">
 
 # Projects:
 
