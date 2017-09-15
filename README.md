@@ -14,7 +14,7 @@
 #
 
 <a href="https://github.com/sleepdefic1t/ark-nbx">
-<img src="https://github.com/sleepdefic1t/ark-nbx/blob/master/ark_nbx_logo.png" width="350">  <img src="https://github.com/sleepdefic1t/ark-nbx/blob/master/pn532_rpizw_spi.png" rotate=90 width="150"></a> 
+<img src="https://github.com/sleepdefic1t/ark-nbx/blob/master/ark_nbx_logo.png" width="350">  <img src="https://github.com/sleepdefic1t/ark-nbx/blob/master/pn532_rpizw_spi.png" rotate=90 width="450"></a> 
 
 #
 
