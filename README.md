@@ -24,7 +24,7 @@
 #
 
 <a href="https://github.com/sleepdefic1t/ark-vpn">
-<img src="https://github.com/sleepdefic1t/ark-vpn/blob/master/ark_vpn_logo.png" width="350">  <img src="https://github.com/sleepdefic1t/ark-vpn/blob/master/rpizw.png" width="450"></a> 
+<img src="https://github.com/sleepdefic1t/ark-vpn/blob/master/ark_vpn_logo.png" width="350">  <img src="https://github.com/sleepdefic1t/ark-vpn/blob/master/rpizw.png" width="350"></a> 
 
 
 
