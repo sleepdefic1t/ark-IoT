@@ -13,10 +13,14 @@
 
 #
 
-<a href="https://github.com/sleepdefic1t/ark-nbx">
-<img src="https://github.com/sleepdefic1t/ark-nbx/blob/master/ark_nbx_logo.png" width="350">  <img src="https://github.com/sleepdefic1t/ark-nbx/blob/master/pn532_rpizw_spi.png" rotate=90 width="450"></a> 
+<a href="https://github.com/sleepdefic1t/ark-mesh">
+<img src="https://github.com/sleepdefic1t/ark-mesh/blob/master/ark_mesh_logo.png" width="350">  <img src="https://github.com/sleepdefic1t/ark-mesh/blob/master/rtl8195.png" width="350"></a> 
 
 #
+
+<a href="https://github.com/sleepdefic1t/ark-nbx">
+<img src="https://github.com/sleepdefic1t/ark-nbx/blob/master/ark_nbx_logo.png" width="350">  <img src="https://github.com/sleepdefic1t/ark-nbx/blob/master/pn532_rpizw_spi.png" width="450"></a> 
+
 
 ## What is Ark-IoT?
 A collection of Internet of Things & Ark-related projects and resources.
